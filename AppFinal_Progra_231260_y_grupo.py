@@ -2,7 +2,7 @@
 # Descripción:Programa que proporciona información clara y accesible sobre hábitos saludables, prevención de enfermedades
 # y cuidado personal a través de una aplicación móvil.
 # Autor(es): #♥David Miranda 231260 ♥ Adriana Velasquez 16325, Javier Linares 231135, Daniel Arevalo 231175
-# Fecha de creación: 25-05-2023
+# Fecha de creación: 25-04-2023
 # Última fecha de modificación: 14-05-2023
 # Entradas: Información sobre hábitos saludables, prevención de enfermedades y cuidado personal.
 # Salidas: Información clara y accesible sobre hábitos saludables, prevención de enfermedades y cuidado personal.
