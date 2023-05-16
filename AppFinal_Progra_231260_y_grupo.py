@@ -193,65 +193,65 @@ opcion7.config(bg='gray')
 # contenido = tk.Label(ventana, text="♥ Bienestar GT ♥", font=("Arial", 20, "italic"))
 # contenido.pack()
 
-def cambiar_ventana():
+def cambiar_ventana(ventana_principal):
     # Crear nueva ventana
-    nueva_ventana = tk.Toplevel()
+    nueva_ventana = tk.Toplevel(ventana_principal)
 #     nueva_ventana.overrideredirect(True)
     nueva_ventana.resizable(False, False) # Deshabilitar botón de agrandar y cerrar ventana
     nueva_ventana.protocol("WM_DELETE_WINDOW", lambda: None)
-
-
     # Configurar nueva ventana
     nueva_ventana.title("♥ Descripción del Programa ♥")
     nueva_ventana.geometry("500x500")
-
     # Agregar imagen y texto a la nueva ventana
-    imagen = tk.PhotoImage(file="DescripcionAPP.png")
-    imagen_label = tk.Label(nueva_ventana, image=imagen)
-    imagen_label.pack()
-    texto_label = tk.Label(nueva_ventana, text="Descripción del programa <3 ")
-    texto_label.pack()
-
-    # Agregar botón para volver a la ventana anterior
-#     volver_boton = tk.Button(nueva_ventana, text="Volver", command=nueva_ventana.destroy)
-#     volver_boton.pack()
+    try:
+        # Obtener la ruta completa de la imagen
+        imagen_path = os.path.join(os.path.dirname(__file__), "DescripcionAPP.png")
+        imagen = Image.open(imagen_path)
+        imagen = imagen.resize((500, 500), Image.LANCZOS)
+        imagen = ImageTk.PhotoImage(imagen)
+        imagen_label = tk.Label(nueva_ventana, image=imagen)
+        imagen_label.image = imagen
+        imagen_label.pack()
+    except Exception as e:
+        print("Error al cargar la imagen:", e)
+        
     volver_boton = tk.Button(nueva_ventana, text="Volver", command=nueva_ventana.destroy)
     volver_boton.place(x=230, y=470)
 
     # Ocultar ventana actual
     ventana_principal.withdraw()
     
-opcion1.config(command=cambiar_ventana)
-
-def cambiar_ventana1():
+opcion1.config(command=lambda: cambiar_ventana(tk.Toplevel()))
+    
+def cambiar_ventana1(ventana_principal):
     # Crear nueva ventana
-    nueva_ventana1 = tk.Toplevel()
+    nueva_ventana1 = tk.Toplevel(ventana_principal)
 #     nueva_ventana.overrideredirect(True)
     nueva_ventana1.resizable(False, False) # Deshabilitar botón de agrandar y cerrar ventana
     nueva_ventana1.protocol("WM_DELETE_WINDOW", lambda: None)
-
-
     # Configurar nueva ventana
     nueva_ventana1.title("♥ Palabras Clave ♥")
     nueva_ventana1.geometry("500x500")
 
     # Agregar imagen y texto a la nueva ventana
-    imagen = tk.PhotoImage(file="PalabrasClave.png")
-    imagen_label = tk.Label(nueva_ventana1, image=imagen)
-    imagen_label.pack()
-    texto_label = tk.Label(nueva_ventana1, text="Palabras Clave <3 ")
-    texto_label.pack()
-
+    try:
+        # Obtener la ruta completa de la imagen
+        imagen_path = os.path.join(os.path.dirname(__file__), "PalabrasClave.png")
+        imagen = Image.open(imagen_path)
+        imagen = imagen.resize((500, 500), Image.LANCZOS)
+        imagen = ImageTk.PhotoImage(imagen)
+        imagen_label = tk.Label(nueva_ventana1, image=imagen)
+        imagen_label.image = imagen
+        imagen_label.pack()
+    except Exception as e:
+        print("Error al cargar la imagen:", e)
     # Agregar botón para volver a la ventana anterior
-#     volver_boton = tk.Button(nueva_ventana, text="Volver", command=nueva_ventana.destroy)
-#     volver_boton.pack()
     volver_boton2 = tk.Button(nueva_ventana1, text="Volver", command=nueva_ventana1.destroy)
     volver_boton2.place(x=230, y=470)
 
     # Ocultar ventana actual
     ventana_principal.withdraw()
-
-opcion4.config(command=cambiar_ventana1)
+opcion4.config(command=lambda: cambiar_ventana1(tk.Toplevel()))
 
 
 def cambiar_ventana2(ventana_principal):
@@ -332,22 +332,34 @@ def RodillasAltas():
 def LevantamientoDePantorrilla():
     webbrowser.open('https://www.fitliferegime.com/bodyweight-calf-raise-to-build-mass-and-strength-of-calves/')
     
-def cambiar_ventanaayuda():
+def cambiar_ventanaejercicio(ventana_principal):
     # Crear nueva ventana
-    nueva_ventana2 = tk.Toplevel()
+    nueva_ventana2 = tk.Toplevel(ventana_principal)
 #     nueva_ventana.overrideredirect(True)
     nueva_ventana2.resizable(False, False) # Deshabilitar botón de agrandar y cerrar ventana
     nueva_ventana2.protocol("WM_DELETE_WINDOW", lambda: None)
     # Configurar nueva ventana
     nueva_ventana2.title("✨ Ejercicios ✨")
     nueva_ventana2.geometry("1200x600")
+    # Agregar imagen y texto a la nueva ventana
+    try:
+        # Obtener la ruta completa de la imagen
+        imagen_path = os.path.join(os.path.dirname(__file__), "EJERCICIO.png")
+        imagen = Image.open(imagen_path)
+        imagen = imagen.resize((1200, 600), Image.LANCZOS)
+        imagen = ImageTk.PhotoImage(imagen)
+        imagen_label = tk.Label(nueva_ventana2, image=imagen)
+        imagen_label.image = imagen
+        imagen_label.pack()
+    except Exception as e:
+        print("Error al cargar la imagen:", e)
 
     # Agregar imagen y texto a la nueva ventana
-    imagen = tk.PhotoImage(file="EJERCICIO.png")
-    imagen_label = tk.Label(nueva_ventana2, image=imagen)
-    imagen_label.pack()
-    texto_label = tk.Label(nueva_ventana2, text=" ✨ Ejercicios ✨ ")
-    texto_label.pack()
+#     imagen = tk.PhotoImage(file="EJERCICIO.png")
+#     imagen_label = tk.Label(nueva_ventana2, image=imagen)
+#     imagen_label.pack()
+#     texto_label = tk.Label(nueva_ventana2, text=" ✨ Ejercicios ✨ ")
+#     texto_label.pack()
     volver_boton3 = tk.Button(nueva_ventana2, text="Volver", command=nueva_ventana2.destroy, **estilo_boton)
     volver_boton3.place(x=30, y=10)
     volver_boton4 = tk.Button(nueva_ventana2, text="Push Ups", **estilo_boton1, command=push_ups)
@@ -377,7 +389,8 @@ def cambiar_ventanaayuda():
     # Ocultar ventana actual
     ventana_principal.withdraw()
 
-opcion2.config(command=cambiar_ventanaayuda)
+# opcion2.config(command=cambiar_ventanaejercicio)
+opcion2.config(command=lambda: cambiar_ventanaejercicio(tk.Toplevel()))
 
 #-----------------------------------------------------------------------------------------------------
 estilo_botonvtnayuda = {'font': ('Arial', 10, "italic"),
@@ -386,10 +399,9 @@ estilo_botonvtnayuda = {'font': ('Arial', 10, "italic"),
                 'width': 10,
                 'height': 3}
 
-def cambiar_ventanaayuda():
+def cambiar_ventanaayuda(ventana_principal):
     # Crear nueva ventana
-    nueva_ventana3 = tk.Toplevel()
-#     nueva_ventana.overrideredirect(True)
+    nueva_ventana3 = tk.Toplevel(ventana_principal)
     nueva_ventana3.resizable(False, False) # Deshabilitar botón de agrandar y cerrar ventana
     nueva_ventana3.protocol("WM_DELETE_WINDOW", lambda: None)
     # Configurar nueva ventana
@@ -397,19 +409,23 @@ def cambiar_ventanaayuda():
     nueva_ventana3.geometry("1100x600")
 
     # Agregar imagen y texto a la nueva ventana
-    imagen = tk.PhotoImage(file="AYUDA.png")
-    imagen_label = tk.Label(nueva_ventana3, image=imagen)
-    imagen_label.pack()
-    texto_label = tk.Label(nueva_ventana3, text=" ⚠ ¡Ayuda! ⚠ ")
-    texto_label.pack()
+    try:
+        # Obtener la ruta completa de la imagen
+        imagen_path = os.path.join(os.path.dirname(__file__), "AYUDA.png")
+        imagen = Image.open(imagen_path)
+        imagen = imagen.resize((1100, 600), Image.LANCZOS)
+        imagen = ImageTk.PhotoImage(imagen)
+        imagen_label = tk.Label(nueva_ventana3, image=imagen)
+        imagen_label.image = imagen
+        imagen_label.pack()
+    except Exception as e:
+        print("Error al cargar la imagen:", e)
     volver_boton3 = tk.Button(nueva_ventana3, text="Volver", command=nueva_ventana3.destroy, **estilo_botonvtnayuda)
     volver_boton3.place(x=10, y=30)
-    # Agregar botón para volver a la ventana anterior
-#     volver_boton3 = tk.Button(nueva_ventana3, text="Volver", font=("Arial", 20, "italic"), command=nueva_ventana3.destroy)
-#     volver_boton3.place(x=120, y=100)
     # Ocultar ventana actual
     ventana_principal.withdraw()
-opcion3.config(command=cambiar_ventanaayuda)
+    
+opcion3.config(command=lambda: cambiar_ventanaayuda(tk.Toplevel()))
 
 
 #-----------------------------------------------------------------------------------------------------
